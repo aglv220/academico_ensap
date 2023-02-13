@@ -23,8 +23,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
-
+$URL_SYSTEM = explode("/",$_SERVER["REQUEST_URI"]);
+$DIR_SYSTEM = "/".$URL_SYSTEM[1];
+$URL_ROOT = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$DIR_SYSTEM/";
+$config['base_url'] = $URL_ROOT;
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -116,7 +118,7 @@ $config['enable_hooks'] = FALSE;
 | https://codeigniter.com/userguide3/general/creating_libraries.html
 |
 */
-$config['subclass_prefix'] = 'MY_';
+$config['subclass_prefix'] = 'ENSAP_';
 
 /*
 |--------------------------------------------------------------------------
@@ -384,7 +386,7 @@ $config['encryption_key'] = '';
 |
 */
 $config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'ci_session';
+$config['sess_cookie_name'] = 'ensap_session';
 $config['sess_samesite'] = 'Lax';
 $config['sess_expiration'] = 7200;
 $config['sess_save_path'] = NULL;
